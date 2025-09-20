@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agente de Renovação - BNB Crediamigo</title>
+    <link rel="stylesheet" href="/static/css/chat.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Header -->
+        <div class="chat-header">
+            <div class="header-content">
+                <div class="bot-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="bot-info">
+                    <h2>Agente de Renovação</h2>
+                    <span class="status online">
+                        <i class="fas fa-circle"></i>
+                        Online - Pronto para analisar
+                    </span>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-icon" onclick="clearChat()" title="Limpar conversa">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                    <button class="btn-icon" onclick="toggleTheme()" title="Alternar tema">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Messages -->
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    <div class="message-bubble">
+                        <p>👋 Olá! Sou o <strong>Agente de Renovação</strong> do BNB Crediamigo.</p>
+                        <p>Posso analisar a elegibilidade de clientes para renovação de crédito de forma rápida e precisa.</p>
+                        <p>Para começar, digite o <strong>CPF do cliente</strong> que deseja analisar.</p>
+                    </div>
+                    <div class="message-time">
+                        <span id="currentTime"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions" id="quickActions">
+            <div class="quick-action-item" onclick="sendQuickMessage('12345678901')">
+                <i class="fas fa-user"></i>
+                <span>Cliente Teste 1</span>
+            </div>
+            <div class="quick-action-item" onclick="sendQuickMessage('98765432100')">
+                <i class="fas fa-user-times"></i>
+                <span>Cliente com Restrições</span>
+            </div>
+            <div class="quick-action-item" onclick="sendQuickMessage('11122233344')">
+                <i class="fas fa-user-check"></i>
+                <span>Cliente Aprovável</span>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="chat-input-area">
+            <div class="input-container">
+                <input 
+                    type="text" 
+                    id="messageInput" 
+                    placeholder="Digite o CPF do cliente ou faça uma pergunta..."
+                    maxlength="500"
+                    autocomplete="off"
+                >
+                <button id="sendButton" onclick="sendMessage()" disabled>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            <div class="input-suggestions" id="inputSuggestions">
+                <span class="suggestion" onclick="applySuggestion('Este cliente pode renovar o crédito?')">
+                    💡 Este cliente pode renovar o crédito?
+                </span>
+                <span class="suggestion" onclick="applySuggestion('Quais são os impedimentos?')">
+                    ❓ Quais são os impedimentos?
+                </span>
+                <span class="suggestion" onclick="applySuggestion('Análise completa do cliente')">
+                    📊 Análise completa do cliente
+                </span>
+            </div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div class="loading-indicator" id="loadingIndicator">
+            <div class="loading-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <p>Analisando cliente...</p>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="/static/js/chat.js"></script>
+</body>
+</html>
